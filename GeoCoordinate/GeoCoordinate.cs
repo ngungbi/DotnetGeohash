@@ -164,9 +164,9 @@ public struct GeoCoordinate {
     /// Convert coordinate to geo hash string with default precision.
     /// </summary>
     /// <returns></returns>
-    public string ToGeoHash() => ToGeoHash(DefaultGeoHashPrecision);
+    public string ToGeohash() => ToGeohash(DefaultGeoHashPrecision);
 
-    public bool TryGeoHash(Span<char> result, int hashPrecision, out int charsWritten) {
+    public bool TryGeohash(Span<char> result, int hashPrecision, out int charsWritten) {
         charsWritten = 0;
         if (result.Length < hashPrecision) return false;
         var shift = BasePrecision - 5;
@@ -187,7 +187,7 @@ public struct GeoCoordinate {
     /// <param name="hashPrecision">Precision of geo hash result</param>
     /// <returns></returns>
     /// <exception cref="ArgumentOutOfRangeException">When <see cref="hashPrecision"/> is not between 1 and 12</exception>
-    public string ToGeoHash(int hashPrecision) {
+    public string ToGeohash(int hashPrecision) {
         if (hashPrecision is < 1 or > 12) throw new ArgumentOutOfRangeException(nameof(hashPrecision));
         if (_hash == 0) {
             _hash = CalculateHash(Longitude, Latitude);
@@ -195,7 +195,7 @@ public struct GeoCoordinate {
 
         Span<char> result = stackalloc char[hashPrecision];
         // TryGeoHash(result, hashPrecision, out var count);
-        return TryGeoHash(result, hashPrecision, out _)
+        return TryGeohash(result, hashPrecision, out _)
             ? new string(result)
             : string.Empty;
 
@@ -218,7 +218,7 @@ public struct GeoCoordinate {
     /// <param name="hash">String representation of geo hash</param>
     /// <returns></returns>
     /// <exception cref="InvalidOperationException">When hash length equals 0</exception>
-    public static GeoCoordinate FromGeoHash(ReadOnlySpan<char> hash) {
+    public static GeoCoordinate FromGeohash(ReadOnlySpan<char> hash) {
         var length = hash.Length;
         if (length == 0) throw new InvalidOperationException();
         long longHash = 0;

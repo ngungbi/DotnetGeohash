@@ -25,7 +25,7 @@ public class Tests {
     [TestCase(106.709437, -6.329094, 3195111357704980)]
     [TestCase(106.710205, -6.33012, 3195111357524970)]
     [TestCase(106.800254, 0.177515, 3950182899565084)]
-    public void GeoHashTest(double longitude, double latitude, long expected) {
+    public void GeohashTest(double longitude, double latitude, long expected) {
         var coord = new GeoCoordinate(longitude, latitude);
         var hash = coord.GetHash();
         // var hash2 = coord.GetHash2();
@@ -43,7 +43,7 @@ public class Tests {
     [TestCase(106.800254, 0.177515, "w25cn23d471")]
     public void GeoHashStringTest(double longitude, double latitude, string expected) {
         var coord = new GeoCoordinate(longitude, latitude);
-        var hash = coord.ToGeoHash();
+        var hash = coord.ToGeohash();
         // var hash2 = coord.GetHash2();
 
         Console.WriteLine(hash);
@@ -65,13 +65,13 @@ public class Tests {
         Console.WriteLine(coord);
         Assert.Pass();
     }
-    
+
     [Test]
     [TestCase(106.709437, -6.329094, "qqggupz6q57")]
     [TestCase(106.710205, -6.33012, "qqggupxurup")]
     [TestCase(106.800254, 0.177515, "w25cn23d471")]
-    public void FromGeoHashTest(double longitude, double latitude, string hash) {
-        var coord = GeoCoordinate.FromGeoHash(hash);
+    public void FromGeohashTest(double longitude, double latitude, string hash) {
+        var coord = GeoCoordinate.FromGeohash(hash);
         var (lon, lat) = coord;
         Assert.IsTrue(AreEqual(lon, longitude, 1e-5));
         Assert.IsTrue(AreEqual(lat, latitude, 1e-5));
