@@ -26,12 +26,13 @@ public struct GeoCoordinate {
     /// </summary>
     /// <param name="longitude">longitude</param>
     /// <param name="latitude">latitude</param>
-    public GeoCoordinate(double longitude, double latitude) {
+    /// <param name="calculateHash">If true, will calculate hash immediately</param>
+    public GeoCoordinate(double longitude, double latitude, bool calculateHash = false) {
         ValidateLongitude(longitude);
         ValidateLatitude(latitude);
         Longitude = longitude;
         Latitude = latitude;
-        _hash = 0;
+        _hash = calculateHash ? CalculateHash(longitude, latitude) : 0;
     }
 
     /// <summary>
@@ -87,6 +88,10 @@ public struct GeoCoordinate {
         if (longitude is < West or > East) throw new ArgumentOutOfRangeException(arg);
     }
 
+    /// <summary>
+    /// Display coordinate representation in string.
+    /// </summary>
+    /// <returns></returns>
     public override string ToString() {
         // if (Longitude == 0.0 && Latitude == 0.0) return "(0,0)";
         // char we = Longitude > 0 ? 'E' : 'W';
@@ -185,16 +190,19 @@ public struct GeoCoordinate {
     /// Converts coordinate to geo hash string.
     /// </summary>
     /// <param name="hashPrecision">Precision of geo hash result</param>
+    /// <param name="arg"></param>
     /// <returns></returns>
-    /// <exception cref="ArgumentOutOfRangeException">When <see cref="hashPrecision"/> is not between 1 and 12</exception>
-    public string ToGeohash(int hashPrecision) {
-        if (hashPrecision is < 1 or > 12) throw new ArgumentOutOfRangeException(nameof(hashPrecision));
+    /// <exception cref="ArgumentOutOfRangeException">When <c>hashPrecision</c> is not between 1 and 12</exception>
+    public string ToGeohash(int hashPrecision, [CallerArgumentExpression("hashPrecision")] string? arg = null) {
+        if (hashPrecision is < 1 or > 12) {
+            throw new ArgumentOutOfRangeException(arg);
+        }
+
         if (_hash == 0) {
             _hash = CalculateHash(Longitude, Latitude);
         }
 
         Span<char> result = stackalloc char[hashPrecision];
-        // TryGeoHash(result, hashPrecision, out var count);
         return TryGeohash(result, hashPrecision, out _)
             ? new string(result)
             : string.Empty;
@@ -220,14 +228,15 @@ public struct GeoCoordinate {
     /// <exception cref="InvalidOperationException">When hash length equals 0</exception>
     public static GeoCoordinate FromGeohash(ReadOnlySpan<char> hash) {
         var length = hash.Length;
-        if (length == 0) throw new InvalidOperationException();
+        if (length == 0) throw new InvalidOperationException("Geohash contains 0 character");
         long longHash = 0;
         var shift = (BasePrecision - 5);
         for (int i = 0; i < length; i++) {
             Debug.Assert(shift >= 0, "Negative bit shift");
             long value = Base32Chars.IndexOf(hash[i]);
+            if (value < 0) throw new InvalidOperationException("Geohash contains invalid character");
 
-            Debug.Assert(value is >= 0 and <= 31);
+            Debug.Assert(value <= 0x1F);
             longHash += value << shift;
             shift -= 5;
         }
