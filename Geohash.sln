@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoCoordinate", "GeoCoordinate\GeoCoordinate.csproj", "{E2497E25-B94B-46AC-9076-2425035FDB03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{47100E63-5E1B-4248-B0E9-12C4165B143A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Benchmarks", "Benchmarks\Benchmarks.csproj", "{FDD5B1B0-3023-4152-AFBE-9F0B2C52C30F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E2497E25-B94B-46AC-9076-2425035FDB03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2497E25-B94B-46AC-9076-2425035FDB03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2497E25-B94B-46AC-9076-2425035FDB03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2497E25-B94B-46AC-9076-2425035FDB03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47100E63-5E1B-4248-B0E9-12C4165B143A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47100E63-5E1B-4248-B0E9-12C4165B143A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47100E63-5E1B-4248-B0E9-12C4165B143A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47100E63-5E1B-4248-B0E9-12C4165B143A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDD5B1B0-3023-4152-AFBE-9F0B2C52C30F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDD5B1B0-3023-4152-AFBE-9F0B2C52C30F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDD5B1B0-3023-4152-AFBE-9F0B2C52C30F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDD5B1B0-3023-4152-AFBE-9F0B2C52C30F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
