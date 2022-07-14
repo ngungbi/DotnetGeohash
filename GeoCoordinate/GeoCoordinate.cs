@@ -243,4 +243,31 @@ public struct GeoCoordinate {
 
         return FromHash(longHash, BasePrecision);
     }
+
+    private const double EarthRadius = 6371000; // meter
+
+    private static double ToRadians(double value) => value * Math.PI / 180;
+
+    /// <summary>
+    /// Calculate disntance between two points on earth.
+    /// </summary>
+    /// <param name="other"></param>
+    /// <returns>Retunrs disntance in meter.</returns>
+    public double DistanceTo(GeoCoordinate other) {
+        var lon1 = ToRadians(Longitude);
+        var lat1 = ToRadians(Latitude);
+        var lon2 = ToRadians(other.Longitude);
+        var lat2 = ToRadians(other.Latitude);
+
+        var dlon = lon2 - lon1;
+        var dlat = lat2 - lat1;
+
+        var a = Math.Pow(Math.Sin(dlat / 2), 2) +
+                Math.Cos(lat1) * Math.Cos(lat2) * Math.Pow(Math.Sin(dlon / 2), 2);
+
+        var c = 2 * Math.Asin(Math.Sqrt(a));
+        // var c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
+        var d = EarthRadius * c;
+        return d;
+    }
 }

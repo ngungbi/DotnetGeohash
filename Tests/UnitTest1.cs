@@ -114,7 +114,17 @@ public class Tests {
         }
     }
 
-    public static bool AreEqual(double value1, double value2, double tolerance) {
+    [Test]
+    [TestCase(-1.7297222, -1.6997222, 53.3205555, 53.3186111, 2.0043678 * 1000)]
+    public void DistanceTest(double lon1, double lon2, double lat1, double lat2, double expected) {
+        var coord1 = new GeoCoordinate(lon1, lat1);
+        var coord2 = new GeoCoordinate(lon2, lat2);
+        var distance = coord1.DistanceTo(coord2);
+        Assert.AreEqual(expected, distance, 1e-3);
+        // Assert.IsTrue(AreEqual(distance, expected, 1e-5));
+    }
+
+    private static bool AreEqual(double value1, double value2, double tolerance) {
         return Math.Abs(value1 - value2) < tolerance;
     }
 }
