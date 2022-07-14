@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
@@ -11,6 +12,7 @@
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageId>Ngb.GeoCoordinate</PackageId>
         <Authors>Harish Mahatma Putra</Authors>
+        <PackageVersion>1.1.0</PackageVersion>
     </PropertyGroup>
 
 </Project>
