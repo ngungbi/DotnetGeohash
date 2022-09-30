@@ -15,6 +15,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\GeoCoordinate.Json\GeoCoordinate.Json.csproj" />
       <ProjectReference Include="..\GeoCoordinate\GeoCoordinate.csproj" />
     </ItemGroup>
 

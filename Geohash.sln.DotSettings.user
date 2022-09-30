@@ -1,7 +1,8 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=1092858f_002D92ed_002D423a_002D9c1d_002D0d8c5d5d6304/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Tests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=1092858f_002D92ed_002D423a_002D9c1d_002D0d8c5d5d6304/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Tests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::47100E63-5E1B-4248-B0E9-12C4165B143A::net6.0::Tests.Tests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::47100E63-5E1B-4248-B0E9-12C4165B143A::net6.0::Tests.JsonTest.SerializationTest&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	
@@ -13,9 +14,11 @@
     &lt;TestId&gt;NUnit3x::47100E63-5E1B-4248-B0E9-12C4165B143A::net6.0::Tests.Tests.FromHashTest&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=ef084511_002Dd1f5_002D496c_002D9a68_002Ddac68387455a/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GeoHashTest #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=ef084511_002Dd1f5_002D496c_002D9a68_002Ddac68387455a/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="GeoHashTest #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::47100E63-5E1B-4248-B0E9-12C4165B143A::net6.0::Tests.Tests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::47100E63-5E1B-4248-B0E9-12C4165B143A::net6.0::Tests.JsonTest.SerializationTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::47100E63-5E1B-4248-B0E9-12C4165B143A::net6.0::Tests.JsonTest.DeserializationTest&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	</wpf:ResourceDictionary>
